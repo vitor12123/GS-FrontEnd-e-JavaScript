@@ -1,0 +1,148 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body#body-index {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7fafc;
+    color: #222;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: #e3f2fd;
+    border-bottom: 1px solid #b3c6d6;
+    gap: 1rem;
+}
+
+header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #1976d2;
+    letter-spacing: 1px;
+}
+
+header img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+main.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+main > div {
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2rem;
+    color: #1565c0;
+    margin-bottom: 0.5rem;
+}
+
+main h2 {
+    font-size: 1.2rem;
+    color: #1976d2;
+    margin: 1.2rem 0 0.5rem 0;
+}
+
+.img-destaque {
+    width: 100%;
+    max-width: 350px;
+    height: 180px;
+    background: #e0e0e0;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+nav {
+    background: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+nav h2 {
+    margin-bottom: 0.5rem;
+}
+
+nav ol {
+    list-style: decimal inside;
+    padding-left: 1rem;
+}
+
+nav li {
+    margin: 0.3rem 0;
+}
+
+nav a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+nav a:hover,
+nav a:focus {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+.sumario-secao {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(30, 64, 175, 0.04);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0 0.8rem 0;
+    color: #789;
+    font-size: 1rem;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 2rem;
+    background: none;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    main.container {
+        padding: 0 0.5rem;
+        gap: 1.2rem;
+    }
+    main h1 {
+        font-size: 1.3rem;
+    }
+}
