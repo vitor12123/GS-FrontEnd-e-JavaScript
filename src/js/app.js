@@ -21,15 +21,40 @@ function abreMenu() {
         contador++
         let menu = document.createElement('div')
         menu.innerHTML = `
-        <h5>pagina da InundaZero</h5>
+        <h2>Menu</h2>
+
+        <h4 id="info">Paginas Relacionadas:</h4>
+        <a href="./../pages/index.html">Home</a>
+
+        <h4 id="login">Login:</h4>
+        <form id="formLogin">
+        <label>Usuario:</label>
+        <input type="text" id="nome" placeholder="digite seu usuario..."> 
+        <label>senha:</label>
+        <input type="password" id="senha" placeholder="digite sua senha..."> 
+        <button>Entrar</button>
+        </form>
+
+        <h4 id="Cadastro">Cadastre-se:</h4>
+        <form id="formLogin">
+        <label>Usuario:</label>
+        <input type="text" id="nome" placeholder="crie um usuario..."> 
+        <label>senha:</label>
+        <input type="password" id="senha" placeholder="crie uma senha..."> 
+        <button>Entrar</button>
+        </form>
+
         `
         hbgBTN.classList.toggle("aberto");
         menuText.append(menu)
         if (hbgBTN.classList.contains("aberto")) {
             menuOpen.style.display = "block";
-            menuOpen.style.marginLeft = '1110px'
+            menuOpen.style.marginLeft = '1100px'
+            menuOpen.style.paddingRight = '130px'
+            hbgBTN.style.marginLeft = '1000px'
             
         } else {
+            hbgBTN.style.marginLeft = '1225px'
             menuOpen.style.display = "none";
             menu.innerHTML = ''
         }  
