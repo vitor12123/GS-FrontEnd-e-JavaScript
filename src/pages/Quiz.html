@@ -35,8 +35,10 @@
         form article {
             max-width: 400px;
         }
-
-
+        a{ 
+            text-decoration: none;
+        }
+        
         #menu {
             margin-top: 8px;
             border-radius: 50px;
@@ -100,7 +102,7 @@
             margin-bottom: 50px;
             margin-left: 400px;
         }
-        #formLogin {
+        .formLogin {
             border: solid 1px;
             margin: 25px 0px 0px 0px;
             padding: 10px 10px 20px 10px;
@@ -111,17 +113,27 @@
         #login {
             margin-bottom: -20px;
         }
-        #formLogin button {
-            border-radius: 5px;
-            margin: 5px 0px 0px 50px;
+        #cadastro {
+            margin-bottom: -90px;
         }
-
-        
+        .formLogin button {
+            border-radius: 5px;
+            margin: 5px 0px 0px 10px;
+        }
+        .mudarCor {
+            display: block;
+            width: 100px;
+        }
+        #formCadastro {
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body id="corpo">
     <header>
+    <a href="./../pages/index.html">
     <h2 id="inicio">InundaZero </h2>
+    </a>
     <img src="./../imagens/ChatGPT Image 29 de mai. de 2025, 00_54_06.png" alt="./../imagens/ChatGPT Image 29 de mai. de 2025, 00_54_06.png" class="imag" id="menu">
     </header>
     <nav id="menuOpen">
@@ -203,7 +215,7 @@
                 <label>Se abrigar no banheiro ou cômodo mais interno da casa</label>
             </article>
             <article class="quiz" id="p6">
-                <h4>como NÃO saber se um tsunami estiver vindo para uma região(escolha a opção errada)?</h4>
+                <h4>Qual dessa opções NÃO indica um tsunami?</h4>
                 <input type="radio" name="6" id="Tempestades" value="a" required>
                 <label>Recuo repentino do mar</label>
                 <br>

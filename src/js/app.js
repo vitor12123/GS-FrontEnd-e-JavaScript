@@ -13,11 +13,15 @@ const pergunta7 = document.getElementById('p7')
 const pergunta8 = document.getElementById('p8')
 const pergunta9 = document.getElementById('p9')
 const pergunta10 = document.getElementById('p10')
+const body = document.body
+const cadastro = document.getElementById('cadastro')
 
 let contador = 0 
 
 function abreMenu() {
-    hbgBTN.addEventListener('click', ()=> {
+    hbgBTN.addEventListener('click', (event)=> {
+        menuText.innerHTML = ''
+        event.preventDefault()
         contador++
         let menu = document.createElement('div')
         menu.innerHTML = `
@@ -27,40 +31,69 @@ function abreMenu() {
         <a href="./../pages/index.html">Home</a>
 
         <h4 id="login">Login:</h4>
-        <form id="formLogin">
+        <form class="formLogin">
         <label>Usuario:</label>
         <input type="text" id="nome" placeholder="digite seu usuario..."> 
         <label>senha:</label>
         <input type="password" id="senha" placeholder="digite sua senha..."> 
         <button>Entrar</button>
+        <button id="cadastro" type="button">Cadastre-se</button>
         </form>
 
-        <h4 id="Cadastro">Cadastre-se:</h4>
-        <form id="formLogin">
-        <label>Usuario:</label>
-        <input type="text" id="nome" placeholder="crie um usuario..."> 
-        <label>senha:</label>
-        <input type="password" id="senha" placeholder="crie uma senha..."> 
-        <button>Entrar</button>
-        </form>
+
+        <h4 id="corDeFundo"> Personalize a cor de fundo:</h4>
+        <button type="button" class="mudarCor" id="azul">Azul</button>
+        <button type="button" class="mudarCor" id="vermelho">vermelho</button>
+        <button type="button" class="mudarCor" id="padrao">branco</button>
 
         `
-        hbgBTN.classList.toggle("aberto");
+        hbgBTN.classList.toggle("aberto")
         menuText.append(menu)
+        const MudarAzul = document.getElementById('azul')
+        MudarAzul.addEventListener('click', () => {
+            body.style.backgroundColor = 'blue'
+        });
+        const MudarVermelho = document.getElementById('vermelho')
+        MudarVermelho.addEventListener('click', () => {
+            body.style.backgroundColor = 'red'
+        });
+        const MudarBranco = document.getElementById('padrao')
+        MudarBranco.addEventListener('click', () => {
+            body.style.backgroundColor = 'white'
+        });
+
+        const cadastro = document.getElementById('cadastro');
+        cadastro.addEventListener('click', (event) => {
+            menuText.innerHTML = `
+                <h4 id="cadastro">Cadastre-se:</h4>
+                <form class="formLogin" id="formCadastro">
+                    <label>Usuário:</label>
+                    <input type="text" id="nome" placeholder="Crie um usuário..."> 
+                    <label>Senha:</label>
+                    <input type="password" id="senha" placeholder="Crie uma senha..."> 
+                    <button>Cadastrar</button>
+                    <button id="voltar">voltar</button>
+                </form>
+            `
+        })
+
         if (hbgBTN.classList.contains("aberto")) {
-            menuOpen.style.display = "block";
+            menuOpen.style.display = "block"
             menuOpen.style.marginLeft = '1100px'
             menuOpen.style.paddingRight = '130px'
             hbgBTN.style.marginLeft = '1000px'
             
         } else {
             hbgBTN.style.marginLeft = '1225px'
-            menuOpen.style.display = "none";
+            menuOpen.style.display = "none"
             menu.innerHTML = ''
         }  
         if(contador > 2) {
             menu.innerHTML = ''
         }  
+        if (contador > 1) {
+            contador = 1
+        }
     })
 }
 
