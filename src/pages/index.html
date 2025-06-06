@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InundaZero</title>
     <link rel="stylesheet" href="./../css/style.css">
-    <link rel="stylesheet" href="./../assets/fonts/font.css">
     <link rel="icon" type="image/png" href="../assets/imagens/logo.png">
     <style>
         nav {
@@ -139,7 +138,7 @@
             background-color: var(--cor-secundaria);
             color: var(--cor-texto-secundario);
         }
-        .aberto {
+         .aberto {
             max-width: 100px;
             max-height: 100px;
             display: inline-block;
@@ -147,6 +146,13 @@
             margin-top: -70px;
             position: absolute;
             margin-right: 200px;
+            visibility: visible;
+        }
+        #textMenu {
+            margin-top:500px;
+            margin-left: 20px;
+            padding-right: 90px;
+            position: fixed;
         }
         .slide-img {
             filter: brightness(0.5) grayscale(0.2);
@@ -233,13 +239,14 @@
         <a href="./index.html">
             <img src="../assets/imagens/logo.png" alt="logo">
         </a>  
-        <svg id="menu" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>    
+        <img src="../assets/imagens/menu_hamburguer.png" alt="menu_hamburguer" id="menu" class="imag">
     </header>
-    <nav id="menuOpen">
-        <article id="textMenu">
+    <div id="menuOpen">
+        
+        <div id="textMenu">
 
-        </article>
-    </nav>
+        </div>
+    </div>
     <div class="slideshow-container">
         <div class="texto-destaque">
             <h1>Desastres Naturais</h1>

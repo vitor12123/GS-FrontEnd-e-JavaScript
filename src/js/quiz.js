@@ -48,7 +48,22 @@ function abreMenu() {
 
         `
         hbgBTN.classList.toggle("aberto")
+
+         if (!hbgBTN.classList.contains("aberto")) {
+            menuText.style.display = "none";
+            menuText.innerHTML = '';
+            hbgBTN.style.marginLeft = '1225px';
+            return;
+        }
+
         menuText.append(menu)
+        
+        menuText.style.display = "block";
+        menuText.style.marginLeft = '0px';
+        menuText.style.paddingRight = '130px';
+        menuText.style.zIndex = '100';
+        hbgBTN.style.marginLeft = '1000px';
+
         const MudarAzul = document.getElementById('azul')
         MudarAzul.addEventListener('click', () => {
             body.style.backgroundColor = 'blue'
@@ -76,25 +91,7 @@ function abreMenu() {
                 </form>
             `
         })
-
-        if (hbgBTN.classList.contains("aberto")) {
-            menuText.style.display = "block"
-            menuText.style.marginLeft = '00px'
-            menuText.style.paddingRight = '130px'
-            menuText.style.zIndex = '100'
-            hbgBTN.style.marginLeft = '1000px'
-            
-        } else {
-            hbgBTN.style.marginLeft = '1225px'
-            menuOpen.style.display = "none"
-            menu.innerHTML = ''
-        }  
-        if(contador > 2) {
-            menu.innerHTML = ''
-        }  
-        if (contador > 1) {
-            contador = 1
-        }
+        
     })
 }
 
