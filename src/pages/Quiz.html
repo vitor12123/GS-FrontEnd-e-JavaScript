@@ -28,6 +28,7 @@
         form {
             border: solid 1px ;
             margin: 0px 400px 150px 400px;
+            padding-right: 50px;
         }
         form h4 {
             max-width: 350px;
@@ -73,16 +74,16 @@
        .aberto {
         max-width: 100px;
         max-height: 100px;
-        display: inline-block;
+        display: block ;
         margin-left: 1000px;
         margin-top: -70px;
-        position: absolute;
-        padding-right: 200px;
+        margin-right: 200px; 
        }
+
        .fechado {
-        display: none;
-        margin-right: 10000px;
-        }
+        margin-right: -200px
+       }
+
         #textMenu {
             margin-left: 20px;
             padding-right: 90px;
@@ -91,9 +92,7 @@
         #preAbertura{
             background-color: #fff;
         }
-        #infoQuiz {
-            margin-left: 475px;
-        }
+
         .quiz {
             margin-left: 50px;
         }
@@ -134,13 +133,13 @@
         <a href="./index.html">
             <img src="../assets/imagens/logo.png" alt="logo">
         </a>
-        <svg id="menu" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>    
+        <img src="../assets/imagens/menu_hamburguer.png" alt="menu_hamburguer" id="menu" class="imag">
     </header> 
-    <nav id="menuOpen">
-        <article id="textMenu">
+    <div id="menuOpen">
+        <div id="textMenu">
 
-        </article>
-    </nav>
+        </div>
+    </div>
     <section>
         <h1 id="infoQuiz">QUIZ: sobre desastres naturais.</h1>
         <form>
@@ -270,9 +269,9 @@
                 <input type="radio" name="9" id="furacões" value="d" required>
                 <label>A altitude elevada das cidades em relação ao mar.</label>
             </article>
-            <article class="quiz" id="p10">
+            <article class="quiz" id="p10" >
                 <h4>O que pode aumentar o risco de deslizamentos de terra em áreas urbanas?</h4>
-                <input type="radio" name="10" id="Tempestades" value="a" required>
+                <input type="radio" name="10" id="Tempestades" value="a" required >
                 <label>A presença de árvores grandes e antigas no local.</label>
                 <br>
                 <input type="radio" name="10" id="vulcao" value="b" required>
@@ -292,5 +291,5 @@
         
     </section>
 </body>
-<script src="./../js/app.js"></script>
+<script src="./../js/quiz.js"></script>
 </html>

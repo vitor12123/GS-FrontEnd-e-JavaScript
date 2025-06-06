@@ -150,8 +150,8 @@ let contador = 0
 
 function abreMenu() {
     hbgBTN.addEventListener('click', (event)=> {
-        menuText.innerHTML = ''
         event.preventDefault()
+        menuText.innerHTML = ''
         contador++
         let menu = document.createElement('div')
         menu.innerHTML = `
@@ -177,8 +177,9 @@ function abreMenu() {
         <button type="button" class="mudarCor" id="padrao">branco</button>
 
         `
-        hbgBTN.classList.toggle("aberto")
-        menuText.append(menu)
+        hbgBTN.classList.add("aberto")
+        menuOpen.append(menu)
+        menuOpen.classList.add(1)
         const MudarAzul = document.getElementById('azul')
         MudarAzul.addEventListener('click', () => {
             body.style.backgroundColor = 'blue'
@@ -193,7 +194,7 @@ function abreMenu() {
         });
 
         const cadastro = document.getElementById('cadastro');
-        cadastro.addEventListener('click', (event) => {
+        cadastro.addEventListener('click', () => {
             menuText.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
@@ -231,8 +232,8 @@ abreMenu()
 
 function enviarquiz() {
     let resultado = 0
-    BTNenviar.addEventListener('click', (event)=> {
-        event.preventDefault()
+    BTNenviar.addEventListener('click', (enviar)=> {
+        enviar.preventDefault()
         let resposta = pergunta1.querySelector('input[name="1"]:checked')
         let respostaSelecionada = resposta.value 
         if (respostaSelecionada === "c"){
