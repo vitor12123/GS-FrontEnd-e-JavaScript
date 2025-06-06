@@ -7,10 +7,45 @@
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="./../assets/fonts/font.css">
     <style>
+        nav {
+            width:350px;
+            position: fixed;
+            top: 12vh;
+            left: 1rem;
+            background-color: var(--cor-primaria);
+            border-radius: 10px;
+            color: var(--cor-texto);
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 10px;
+            box-shadow: var(--cor-terciaria) 0px 0px 10px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            transition: opacity 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            nav {
+                position: static;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 10px;
+            }
+            main {
+                padding-left: 0;
+            }
+        }
+        nav.mostrar {
+            opacity: 1;
+            pointer-events: auto;
+        }
         .slideshow-container {
             width: 100%;
             max-width: 2000px;
-            height: 80vh;
+            height: 90vh;
             min-height: 300px;
             background: #2f4b7c;
             display: flex;
@@ -21,13 +56,13 @@
             overflow: hidden;
             box-shadow: 0 4px 16px #003f5c55;
             border-radius: 20px;
+            top: 10vh;
         }
 
 
         .slide-img {
             width: 100%;
             height: 100%;
-
             filter: brightness(0.5) grayscale(0.2);
             position: absolute;
             top: 0;
@@ -37,7 +72,7 @@
 
         .seta {
             background: rgba(0,0,0,0.3);
-            color: #fff;
+            color: var(--cor-primaria);
             border: none;
             font-size: 2.5rem;
             width: 60px;
@@ -69,84 +104,106 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 3;
-            color: #fff;
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
             text-align: center;
-            text-shadow: 0 2px 8px #000a;
-            background: rgba(0,0,0,0.2);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.3);
             padding: 1rem 2rem;
             border-radius: 12px;
+            box-shadow: black 0px 0px 10px;
         }
-        nav{
-            top: 0;
-            left: 0;
-            width: 40%;
-            border-radius: 10px;
-            color: white;
-            padding: 20px;
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin-bottom: 18px;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: bold;
+            border: solid 1px var(--cor-terciaria);
+            padding: 5px 8px;
+            border-radius: 5px;
+            display: block;
+            transition: background 0.2s;
+        }
+        nav a.active,
+        nav a:hover {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto-secundario);
         }
     </style>
 </head>
 
 <body id="body-index">
     <header>
-            <button href="./index.html" id="logo">
-                <h1>Inunda</h1>
-                <h1 id="zero-tittle">Zero</h1>
-            </button>
-            <br>
-            <button id="menu"><img id="menuHamburguer" src="../assets/imagens/menu_hamburguer.png" alt="menuHamburguer"></button>
-    </header>
-    <main class="main-index">
-        
-       <div class="slideshow-container">
-            <div class="texto-destaque">
-                <h1>Desastres Naturais</h1>
-                <h2>O que são?</h2>
-                <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como</p>
-            </div>  
-            <button class="seta seta-esquerda" id="seta-esquerda">&#10094;</button>
-            <img class="slide-img" id="slide-img" src="../assets/imagens/enchente.png" alt="enchente">
-            <button class="seta seta-direita" id="seta-direita">&#10095;</button>
+        <a href="./index.html">
+            <img src="../assets/imagens/logo.jpg" alt="logo">
+        </a>
+        <button id="menu-button">
+            <img src="../assets/imagens/menu_hamburguer.png" alt="menu" id="menu-icon">
+        </button>        
+    </header> 
+    <div class="slideshow-container">
+        <div class="texto-destaque">
+            <h1>Desastres Naturais</h1>
+            <h2>O que são?</h2>
+            <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como</p>
         </div>  
+        <button class="seta seta-esquerda" id="seta-esquerda">&#10094;</button>
+        <img class="slide-img" id="slide-img" src="../assets/imagens/enchente.png" alt="enchente">
+        <button class="seta seta-direita" id="seta-direita">&#10095;</button>
+    </div>  
+    <main>
         <nav>
             <h2>Sumário</h2>
-            <ol>
+            <ul>
                 <li><a href="#problema" id="link-problema">O problema que sua solução irá resolver</a></li>
                 <li><a href="#tecnologias" id="link-tecnologias">As tecnologias que serão utilizadas</a></li>
                 <li><a href="#objetivos" id="link-objetivos">Os objetivos que pretendem alcançar</a></li>
                 <li><a href="#publico" id="link-publico">O público-alvo que será impactado</a></li>
                 <li><a href="#beneficios" id="link-beneficios">Os benefícios oferecidos pela solução</a></li>
                 <li><a href="#ajuda" id="link-ajuda">Como a solução ajudará no dia a dia dos usuários</a></li>
-            </ol>
+            </ul>
         </nav>
-        <section id="problema" class="sumario-secao">
-            <h2>O problema que sua solução irá resolver</h2>
-            <p>Desinformação e falta de preparo da população diante de desastres naturais, resultando em maiores riscos e prejuízos.</p>
-        </section>
-        <section id="tecnologias" class="sumario-secao">
-            <h2>As tecnologias que serão utilizadas</h2>
-            <p>Website responsivo, HTML, CSS, JavaScript e integração com APIs de alerta de desastres.</p>
-        </section>
-        <section id="objetivos" class="sumario-secao">
-            <h2>Os objetivos que pretendem alcançar</h2>
-            <p>Informar, educar e preparar a população para agir corretamente em situações de desastres naturais.</p>
-        </section>
-        <section id="publico" class="sumario-secao">
-            <h2>O público-alvo que será impactado</h2>
-            <p>Moradores de áreas de risco, estudantes, professores e a comunidade em geral.</p>
-        </section>
-        <section id="beneficios" class="sumario-secao">
-            <h2>Os benefícios oferecidos pela solução</h2>
-            <p>Redução de riscos, aumento da segurança, acesso rápido à informação e maior conscientização.</p>
-        </section>
-        <section id="ajuda" class="sumario-secao">
-            <h2>Como a solução ajudará no dia a dia dos usuários</h2>
-            <p>Facilitará o acesso a orientações práticas, alertas em tempo real e dicas de prevenção, tornando a rotina mais segura.</p>
-        </section>
-    <footer>
-        <b>&copy; 2024 - InundaZero</b>
-    </footer>
+        <section>
+            <div id="problema" class="sumario-secao">
+                <h2>O problema que sua solução irá resolver</h2>
+                <p>Desinformação e falta de preparo da população diante de desastres naturais, resultando em maiores riscos e prejuízos.</p>
+            </div>
+            <div id="tecnologias" class="sumario-secao">
+                <h2>As tecnologias que serão utilizadas</h2>
+                <p>Website responsivo, HTML, CSS, JavaScript e integração com APIs de alerta de desastres.</p>
+            </div>
+            <div id="objetivos" class="sumario-secao">
+                <h2>Os objetivos que pretendem alcançar</h2>
+                <p>Informar, educar e preparar a população para agir corretamente em situações de desastres naturais.</p>
+            </div>
+            <div id="publico" class="sumario-secao">
+                <h2>O público-alvo que será impactado</h2>
+                <p>Moradores de áreas de risco, estudantes, professores e a comunidade em geral.</p>
+            </div>
+            <div id="beneficios" class="sumario-secao">
+                <h2>Os benefícios oferecidos pela solução</h2>
+                <p>Redução de riscos, aumento da segurança, acesso rápido à informação e maior conscientização.</p>
+            </div>
+            <div id="ajuda" class="sumario-secao">
+                <h2>Como a solução ajudará no dia a dia dos usuários</h2>
+                <p>Facilitará o acesso a orientações práticas, alertas em tempo real e dicas de prevenção, tornando a rotina mais segura.</p>
+            </div>
+        </section>   
     </main>
+    <footer>
+        <b>&copy; 2025 - CODAC</b>
+    </footer>
 </body>
 <script src="./../js/app.js"></script>
 </html>

@@ -1,7 +1,15 @@
-body, main {
+:root{
+    --cor-primaria: #e4e0dd;
+    --cor-secundaria: #2d7696;
+    --cor-terciaria: #04293c;
+    --cor-texto: #052b3e;
+    --cor-texto-secundario: #ffffff;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color: #4e6997;
+    background-color: var(--cor-primaria);
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -12,14 +20,12 @@ body, main {
     box-sizing: border-box;
 }
 main {
-    flex: 1;
     width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 10vh;
-    box-sizing: border-box;
 }
 header {
     width: 100vw;
@@ -32,46 +38,52 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 10vh;
-    background-color: #003f5c;
+    background-color: var(--cor-secundaria);
 }
 
-header button h1 {
-    border: none;
-    color: #ffffff;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    line-height: 0.5px;
-}
-
-#zero-tittle{
-    margin-left: 100px;
+header a img {
+    width: 6rem;
+    height: 6.2rem;
 }
 
 header button {
-    background-color: #003f5c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-secundaria);
     border: none;
     height: 100%;
+    border:solid 1px var(--cor-terciaria);
+    border-radius: 10px;
+    margin-right: 15px;
+    cursor: pointer;
 }
 
 header button img {
-    padding-right: 10px;
-    background-color: #003f5c;
+    background-color: var(--cor-secundaria);
     margin: 0 auto;
     width: 5rem;
     height: 5rem;
 }
 section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15vh;
+}
+div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
-    padding-top: 10vh;
-    box-shadow: #003f5c 0px 0px 10px;
-    background-color: #a5b8c0;
+    box-shadow: var(--cor-terciaria) 0px 0px 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
     border-radius: 10px;
     margin: 2rem;
 }
@@ -79,8 +91,8 @@ footer {
     font-size: 1.5rem;
     width: 100%;
     height: 8vh;
-    color: #d6d7dd;
-    background-color: #003f5c;
+    color: var(--cor-texto);
+    background-color: var(--cor-secundaria);
     display: flex;
     align-items: center;
     justify-content: center;
