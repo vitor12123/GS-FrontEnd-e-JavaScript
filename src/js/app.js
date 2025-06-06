@@ -6,21 +6,80 @@ const imagens = [
     "../assets/imagens/deslizamento.png",
     "../assets/imagens/incendioFlorestal.png"
 ];
+const nomesDesastres = [
+    "Enchentes",
+    "Tsunamis",
+    "Furacões",
+    "Terremotos",
+    "Deslizamento de Terra",
+    "Incêndio Florestal"
+];
 
 let slideAtual = 0;
-const slideImg = document.getElementById("slide-img");
+const slideImgAtual = document.getElementById("slide-img-atual");
+const slideImgNova = document.getElementById("slide-img-nova");
 const setaEsquerda = document.getElementById("seta-esquerda");
 const setaDireita = document.getElementById("seta-direita");
+const nomeDesastreEl = document.getElementById('nome-desastre');
 
-function mostrarSlide(index) {
-    if (index < 0) slideAtual = imagens.length - 1;
-    else if (index >= imagens.length) slideAtual = 0;
-    else slideAtual = index;
-    slideImg.src = imagens[slideAtual];
+function animarSlide(novoIndex, direcao = 1) {
+    if (novoIndex < 0) novoIndex = imagens.length - 1;
+    if (novoIndex >= imagens.length) novoIndex = 0;
+
+    // Define classes de acordo com a direção
+    const sairClasse = direcao === 1 ? "saindo-esquerda" : "saindo-direita";
+    const virClasse = direcao === 1 ? "vindo-direita" : "vindo-esquerda";
+
+    // Remove classes antigas
+    slideImgAtual.className = "slide-img";
+    slideImgNova.className = "slide-img";
+    nomeDesastreEl.className = "";
+
+    // Prepara imagem nova para entrar do lado correto
+    slideImgNova.src = imagens[novoIndex];
+    slideImgNova.style.display = "block";
+    slideImgNova.classList.add(virClasse);
+
+    // Prepara nome do desastre para entrar do lado correto
+    nomeDesastreEl.classList.add(sairClasse);
+
+    // Força reflow para garantir a transição
+    void slideImgNova.offsetWidth;
+    void nomeDesastreEl.offsetWidth;
+
+    // Inicia animação: imagem atual sai, nova entra
+    slideImgAtual.classList.add(sairClasse);
+    setTimeout(() => {
+        slideImgNova.className = "slide-img entrando";
+        nomeDesastreEl.classList.remove(sairClasse);
+        nomeDesastreEl.classList.add(virClasse);
+
+        setTimeout(() => {
+            nomeDesastreEl.textContent = nomesDesastres[novoIndex];
+            nomeDesastreEl.classList.remove(virClasse);
+            nomeDesastreEl.classList.add('entrando');
+        }, 100);
+    }, 10);
+
+    // Após a animação, troca as imagens
+    setTimeout(() => {
+        slideImgAtual.src = imagens[novoIndex];
+        slideImgAtual.className = "slide-img entrando";
+        slideImgNova.style.display = "none";
+        slideAtual = novoIndex;
+    }, 600);
 }
 
-setaEsquerda.addEventListener("click", () => mostrarSlide(slideAtual - 1));
-setaDireita.addEventListener("click", () => mostrarSlide(slideAtual + 1));
+setaEsquerda.addEventListener("click", () => animarSlide(slideAtual - 1, -1));
+setaDireita.addEventListener("click", () => animarSlide(slideAtual + 1, 1));
+
+setInterval(() => {
+    animarSlide(slideAtual + 1, 1);
+}, 4000);
+
+// Inicializa
+slideImgAtual.src = imagens[slideAtual];
+nomeDesastreEl.textContent = nomesDesastres[slideAtual];
 
 const sections = document.querySelectorAll('.sumario-secao');
 const navLinks = document.querySelectorAll('nav a');
@@ -28,7 +87,7 @@ const navLinks = document.querySelectorAll('nav a');
 window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 120;
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
@@ -84,7 +143,7 @@ const pergunta7 = document.getElementById('p7')
 const pergunta8 = document.getElementById('p8')
 const pergunta9 = document.getElementById('p9')
 const pergunta10 = document.getElementById('p10')
-const body = document.body
+
 const cadastro = document.getElementById('cadastro')
 
 let contador = 0 

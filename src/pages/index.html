@@ -48,29 +48,17 @@
             max-width: 2000px;
             height: 90vh;
             min-height: 300px;
-            background: var(--cor-secundaria);
+            background: var(--cor-primaria);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             margin: 0 auto;
             overflow: hidden;
-            box-shadow: 0 4px 16px #003f5c55;
+            box-shadow: 0 4px 16px var(--cor-terciaria);
             border-radius: 20px;
             top: 10vh;
         }
-
-
-        .slide-img {
-            width: 100%;
-            height: 100%;
-            filter: brightness(0.5) grayscale(0.2);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
         .seta {
             background: rgba(0,0,0,0.3);
             color: var(--cor-primaria);
@@ -97,7 +85,7 @@
             right: 20px;
         }
         .seta:hover {
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,016);
         }
         div p{
             font-size: 1.1rem;
@@ -160,7 +148,83 @@
             position: absolute;
             padding-right: 200px;
         }
+        .slide-img {
+            filter: brightness(0.5) grayscale(0.2);
+            transition: transform 0.6s, opacity 0.6s;
+            opacity: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
 
+        /* Animação para direita (próximo) */
+        .slide-img.saindo-esquerda {
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 1;
+        }
+        .slide-img.vindo-direita {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 2;
+        }
+        .slide-img.entrando {
+            transform: translateX(0);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* Animação para esquerda (anterior) */
+        .slide-img.saindo-direita {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 1;
+        }
+        .slide-img.vindo-esquerda {
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        /* Nome do desastre animado igual à imagem */
+        #nome-desastre {
+            opacity: 1;
+            transition: transform 0.1s cubic-bezier(.77,0,.18,1), opacity 0.1s;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, 0);
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            color: var(--cor-texto-secundario);
+            z-index: 3;
+            pointer-events: none;
+        }
+        #nome-desastre.saindo-esquerda {
+            transform: translate(-100%, 0);
+            opacity: 0;
+        }
+        #nome-desastre.vindo-direita {
+            transform: translate(100%, 0);
+            opacity: 0;
+        }
+        #nome-desastre.entrando {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+        #nome-desastre.saindo-direita {
+            transform: translate(100%, 0);
+            opacity: 0;
+        }
+        #nome-desastre.vindo-esquerda {
+            transform: translate(-100%, 0);
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -180,12 +244,14 @@
         <div class="texto-destaque">
             <h1>Desastres Naturais</h1>
             <h2>O que são?</h2>
-            <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como</p>
-        </div>  
+            <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como:</p>
+            <h2 id="nome-desastre"></h2>
+        </div>
         <button class="seta seta-esquerda" id="seta-esquerda">&#10094;</button>
-        <img class="slide-img" id="slide-img" src="../assets/imagens/enchente.png" alt="enchente">
+        <img class="slide-img" id="slide-img-atual" src="../assets/imagens/enchente.png" alt="slide atual">
+        <img class="slide-img" id="slide-img-nova" style="display:none;" alt="slide nova">
         <button class="seta seta-direita" id="seta-direita">&#10095;</button>
-    </div>  
+    </div>
     <main>
         <nav class="sumario">
             <h2>Sumário</h2>
