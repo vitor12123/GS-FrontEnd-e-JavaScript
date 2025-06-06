@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <style>
+        #corpo {
+            background-color: white;
+        }
+        header {
+        display: flex;
+        padding: 0px 0px 0px 20px;
+        letter-spacing: 1px;    
+        background-color: #BDEBFF;
+        border-bottom: 1px solid #b3c6d6;
+        font-size: 2rem;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+        margin: -10px 0px 0px -10px;
+        }
+        section {
+            padding-top: 150px;
+        }
+        form {
+            border: solid 1px ;
+            margin: 0px 400px 150px 400px;
+        }
+        form h4 {
+            max-width: 350px;
+        }
+        form article {
+            max-width: 400px;
+        }
+        a{ 
+            text-decoration: none;
+        }
+        
+        #menu {
+            margin-top: 8px;
+            border-radius: 50px;
+            margin-left: 1225px;
+        }
+
+        #inicio {
+            margin-top: 30px;
+            color:  #1976d2;
+        }
+
+        .imag {
+            max-width: 100px;
+            max-height: 100px;
+            display: inline-block;
+            margin-top: -70px;
+            position: absolute;
+        }
+       #menuOpen {
+        margin-top: -10px;
+        display: flex;
+        background-color: #1976d2;
+        border-bottom: 1px solid #b3c6d6;
+        height: 120%;
+        justify-content: space-between;
+        position: fixed;
+        padding-left: 0px;
+        margin-left: 1400px; 
+        z-index: 3;
+    }
+
+       .aberto {
+        max-width: 100px;
+        max-height: 100px;
+        display: inline-block;
+        margin-left: 1000px;
+        margin-top: -70px;
+        position: absolute;
+        padding-right: 200px;
+       }
+       .fechado {
+        display: none;
+        margin-right: 10000px;
+        }
+        #textMenu {
+            margin-left: 20px;
+            padding-right: 90px;
+        }
+
+        #preAbertura{
+            background-color: #fff;
+        }
+        #infoQuiz {
+            margin-left: 475px;
+        }
+        .quiz {
+            margin-left: 50px;
+        }
+        #ultima {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 400px;
+        }
+        .formLogin {
+            border: solid 1px;
+            margin: 25px 0px 0px 0px;
+            padding: 10px 10px 20px 10px;
+        }
+        #info{
+            margin-bottom: 5px;
+        }
+        #login {
+            margin-bottom: -20px;
+        }
+        #cadastro {
+            margin-bottom: -90px;
+        }
+        .formLogin button {
+            border-radius: 5px;
+            margin: 5px 0px 0px 10px;
+        }
+        .mudarCor {
+            display: block;
+            width: 100px;
+        }
+        #formCadastro {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+    <a href="./../pages/index.html">
+    <h2 id="inicio">InundaZero </h2>
+    </a>
+    <img src="./../imagens/ChatGPT Image 29 de mai. de 2025, 00_54_06.png" alt="./../imagens/ChatGPT Image 29 de mai. de 2025, 00_54_06.png" class="imag" id="menu">
+    </header>
+    <nav id="menuOpen">
+        <article id="textMenu">
+
+        </article>
+    </nav>
+    <section>
+        <h1 id="infoQuiz">QUIZ: sobre desastres naturais.</h1>
+        <form>
+            <article class="quiz" id="p1">
+                <h4>Qual é a principal causa de tsunamis?</h4>
+                <input type="radio" name="1" id="Tempestades" value="a" required>
+                <label>Tempestades tropicais</label>
+                <br>
+                <input type="radio" name="1" id="vulcao" value="b" required>
+                <label>Erupções vulcanicas</label>
+                <br>
+                <input type="radio" name="1" id="terremotos" value="c" required>
+                <label>Terremotos submarinos</label>
+                <br>
+                <input type="radio" name="1" id="furacões" value="d" required>
+                <label>Furacões</label>
+            </article>
+            <article class="quiz" id="p2">
+                <h4> Qual destes desastres naturais está mais relacionado com o aumento do nível dos oceanos e mudanças climáticas?</h4>
+                <input type="radio" name="2" id="Tempestades" value="a" required>
+                <label>Tornados</label>
+                <br>
+                <input type="radio" name="2" id="vulcao" value="b" required>
+                <label>terremotos</label>
+                <br>
+                <input type="radio" name="2" id="terremotos" value="c" required>
+                <label>Deslizamento de terra</label>
+                <br>
+                <input type="radio" name="2" id="furacões" value="d" required>
+                <label>Inundações costeiras</label>
+            </article>
+            <article class="quiz" id="p3">
+                <h4>Qual é o nome dado à escala usada para medir a magnitude de um terremoto?</h4>
+                <input type="radio" name="3" id="Tempestades" value="a" required>
+                <label>Escala de Fujita</label>
+                <br>
+                <input type="radio" name="3" id="vulcao" value="b" required>
+                <label>Escala de Richter</label>
+                <br>
+                <input type="radio" name="3" id="terremotos" value="c" required>
+                <label>Escala de Beaufort</label>
+                <br>
+                <input type="radio" name="3" id="furacões" value="d" required>
+                <label>Escala de Mercalli</label>
+            </article>
+            <article class="quiz" id="p4">
+                <h4>Em caso de terremoto, o que você deve fazer se estiver dentro de um prédio?</h4>
+                <input type="radio" name="4" id="Tempestades" value="a" required>
+                <label>Correr imediatamente para fora, mesmo que o prédio esteja balançando</label>
+                <br>
+                <input type="radio" name="4" id="vulcao" value="b" required>
+                <label> Se esconder debaixo de móveis resistentes e proteger a cabeça</label>
+                <br>
+                <input type="radio" name="4" id="terremotos" value="c" required>
+                <label>Usar o elevador para descer rapidamente</label>
+                <br>
+                <input type="radio" name="4" id="furacões" value="d" required>
+                <label>Se aproximar das janelas para observar o que está acontecendo</label>
+            </article>
+            <article class="quiz" id="p5">
+                <h4>Durante um alagamento repentino, você está em casa e a água começa a subir rapidamente. Qual é a atitude mais segura a se tomar?</h4>
+                <input type="radio" name="5" id="Tempestades" value="a" required>
+                <label> Subir para o telhado e esperar por resgate, desligando a energia elétrica se possível</label>
+                <br>
+                <input type="radio" name="5" id="vulcao" value="b" required>
+                <label>Abrir portas e janelas para deixar a água sair mais rápido</label>
+                <br>
+                <input type="radio" name="5" id="terremotos" value="c" required>
+                <label>Permanecer no andar térreo e aguardar instruções pelo rádio</label>
+                <br>
+                <input type="radio" name="5" id="furacões" value="d" required>
+                <label>Se abrigar no banheiro ou cômodo mais interno da casa</label>
+            </article>
+            <article class="quiz" id="p6">
+                <h4>Qual dessa opções NÃO indica um tsunami?</h4>
+                <input type="radio" name="6" id="Tempestades" value="a" required>
+                <label>Recuo repentino do mar</label>
+                <br>
+                <input type="radio" name="6" id="vulcao" value="b" required >
+                <label>Tremor de terra forte e prolongado</label>
+                <br>
+                <input type="radio" name="6" id="terremotos" value="c" required>
+                <label>Nuvens escuras cobrindo o ceu</label>
+                <br>
+                <input type="radio" name="6" id="furacões" value="d" required >
+                <label>Som alto e estranho vindo do mar</label>
+            </article>
+            <article class="quiz" id="p7">
+            <h4>Como se forma um tornado?</h4>
+            <input type="radio" name="7" id="Tempestades" value="a" required>
+            <label>Tornados se formam a partir de tempestades fortes, quando correntes de ar quente e frio se encontram, criando uma coluna de ar giratória muito intensa que se estende da nuvem até o solo.</label>
+            <br>
+            <input type="radio" name="7" id="vulcao" value="b" required>
+            <label>Tornados se formam quando ventos frios do polo norte colidem com ventos quentes do polo sul no meio do oceano.</label>
+            <br>
+            <input type="radio" name="7" id="terremotos" value="c" required>
+            <label>Os tornados se formam a partir de chuvas fortes</label>
+            <br>
+            <input type="radio" name="7" id="furacões" value="d" required>
+            <label>Tornados se formam quando a chuva se transforma em vento forte sem a necessidade de nuvens ou tempestades.</label>
+        </article>
+         <article class="quiz" id="p8">
+                <h4>por qual motivo se deve a maioria dos alagamentos?</h4>
+                <input type="radio" name="8" id="Tempestades" value="a" required>
+                <label>Porque as nuvens de chuva caem direto sobre os rios causando transbordamento imediato.</label>
+                <br>
+                <input type="radio" name="8" id="vulcao" value="b" required>
+                <label>Porque a lua cheia atrai a água da chuva para as cidades.</label>
+                <br>
+                <input type="radio" name="8" id="terremotos" value="c" required>
+                <label>Porque o vento sopra a água da chuva para os lugares mais baixos.</label>
+                <br>
+                <input type="radio" name="8" id="furacões" value="d" required>
+                <label>Porque o acúmulo de lixo e a falta de drenagem urbana impedem o escoamento da água da chuva, causando alagamentos nas cidades.</label>
+            </article>
+            <article class="quiz" id="p9">
+                <h4>Qual das opções contribui mais para o aumento da temperatura nas cidades grandes (efeito de ilha de calor)?</h4>
+                <input type="radio" name="9" id="Tempestades" value="a" required>
+                <label>O uso excessivo de concreto e asfalto sem áreas verdes.</label>
+                <br>
+                <input type="radio" name="9" id="vulcao" value="b" required>
+                <label>A presença de muitos rios e lagos.</label>
+                <br>
+                <input type="radio" name="9" id="terremotos" value="c" required>
+                <label>As tempestades frequentes durante o verão.</label>
+                <br>
+                <input type="radio" name="9" id="furacões" value="d" required>
+                <label>A altitude elevada das cidades em relação ao mar.</label>
+            </article>
+            <article class="quiz" id="p10">
+                <h4>O que pode aumentar o risco de deslizamentos de terra em áreas urbanas?</h4>
+                <input type="radio" name="10" id="Tempestades" value="a" required>
+                <label>A presença de árvores grandes e antigas no local.</label>
+                <br>
+                <input type="radio" name="10" id="vulcao" value="b" required>
+                <label>A construção em encostas sem estrutura adequada de drenagem.</label>
+                <br>
+                <input type="radio" name="10" id="terremotos" value="c" required>
+                <label>A falta de luz solar direta nas áreas de morro.</label>
+                <br>
+                <input type="radio" name="10" id="furacões" value="d" required>
+                <label> O vento forte vindo de regiões costeiras.</label>
+            </article>
+            <button id="ultima">enviar</button>
+            <div id="totalPontos">
+
+            </div>
+        </form>
+        
+    </section>
+</body>
+<script src="./../js/app.js"></script>
+</html>
