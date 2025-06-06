@@ -6,6 +6,7 @@
     <title>InundaZero</title>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="./../assets/fonts/font.css">
+    <link rel="icon" type="image/png" href="../assets/imagens/logo.png">
     <style>
         nav {
             width:350px;
@@ -47,7 +48,7 @@
             max-width: 2000px;
             height: 90vh;
             min-height: 300px;
-            background: #2f4b7c;
+            background: var(--cor-secundaria);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,6 +99,16 @@
         .seta:hover {
             background: rgba(0,0,0,0.6);
         }
+        div p{
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        div h2 {
+            font-size: 1.8rem;
+        }
         .texto-destaque {
             position: absolute;
             top: 50%;
@@ -140,18 +151,31 @@
             background-color: var(--cor-secundaria);
             color: var(--cor-texto-secundario);
         }
+        .aberto {
+            max-width: 100px;
+            max-height: 100px;
+            display: inline-block;
+            margin-left: 1000px;
+            margin-top: -70px;
+            position: absolute;
+            padding-right: 200px;
+        }
+
     </style>
 </head>
 
 <body id="body-index">
     <header>
         <a href="./index.html">
-            <img src="../assets/imagens/logo.jpg" alt="logo">
+            <img src="../assets/imagens/logo.png" alt="logo">
         </a>
-        <button id="menu-button">
-            <img src="../assets/imagens/menu_hamburguer.png" alt="menu" id="menu-icon">
-        </button>        
-    </header> 
+        <svg id="menu" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>    
+    </header>
+    <nav id="menuOpen">
+        <article id="textMenu">
+
+        </article>
+    </nav>
     <div class="slideshow-container">
         <div class="texto-destaque">
             <h1>Desastres Naturais</h1>
@@ -163,41 +187,53 @@
         <button class="seta seta-direita" id="seta-direita">&#10095;</button>
     </div>  
     <main>
-        <nav>
+        <nav class="sumario">
             <h2>Sumário</h2>
             <ul>
-                <li><a href="#problema" id="link-problema">O problema que sua solução irá resolver</a></li>
-                <li><a href="#tecnologias" id="link-tecnologias">As tecnologias que serão utilizadas</a></li>
-                <li><a href="#objetivos" id="link-objetivos">Os objetivos que pretendem alcançar</a></li>
-                <li><a href="#publico" id="link-publico">O público-alvo que será impactado</a></li>
-                <li><a href="#beneficios" id="link-beneficios">Os benefícios oferecidos pela solução</a></li>
-                <li><a href="#ajuda" id="link-ajuda">Como a solução ajudará no dia a dia dos usuários</a></li>
+                <li><a href="#problema" id="link-problema">O problema</a></li>
+                <li><a href="#tecnologias" id="link-tecnologias">As tecnologias utilizadas</a></li>
+                <li><a href="#objetivos" id="link-objetivos">Os objetivos</a></li>
+                <li><a href="#publico" id="link-publico">Nosso público-alvo</a></li>
+                <li><a href="#beneficios" id="link-beneficios">Os benefícios</a></li>
+                <li><a href="#ajuda" id="link-ajuda">Como a solução ajudará no dia a dia</a></li>
             </ul>
         </nav>
         <section>
             <div id="problema" class="sumario-secao">
-                <h2>O problema que sua solução irá resolver</h2>
-                <p>Desinformação e falta de preparo da população diante de desastres naturais, resultando em maiores riscos e prejuízos.</p>
+                <h2>O problema</h2>
+                <p>
+                    não tínhamos certeza do nível de impacto que as chuvas teriam sobre o nível dos rios. Ou seja, não tínhamos informação suficiente para comunicar com certeza e segurança para enfatizar devidamente a importância das pessoas evacuarem.
+                </p>
             </div>
             <div id="tecnologias" class="sumario-secao">
-                <h2>As tecnologias que serão utilizadas</h2>
-                <p>Website responsivo, HTML, CSS, JavaScript e integração com APIs de alerta de desastres.</p>
+                <h2>As tecnologias utilizadas</h2>
+                <p>
+                    Nosso dispositivo será composto por um SBC (single board computer) tipo Arduino ou Esp32, dois sensores de umidade do solo, um sensor de pressão Barométrica (bmp280), um modulo de GPS (Neo-6M), um modulo de internet celular (sim800l) e um sensor de temperatura e umidade (DHT11). Ele será energizado através de baterias facilmente substituíveis e recarregáveis, por ser um equipamento de baixo consumo elétrico, as baterias só precisarão ser trocadas após meses. Tudo isso montado dentro de uma caixa impressa 3D para fácil transporte e para proteger os componentes dos elementos.
+                    Todos os dados coletados pelos sensores serão enviados para a “nuvem”, onde dentro do servidor os dados serão processados através de algoritmos ou uma AI para prever catástrofes e alertar órgãos de segurança pública caso necessário. E possivelmente enviar alertas automatizados para as populações em regiões de risco que serão afetadas.
+                    Então nosso sistema precisará de um Servidor próprio, ou utilizar de outros provedores de banco de dados, como AWS, Oracle ou Google.
+                </p>
             </div>
             <div id="objetivos" class="sumario-secao">
-                <h2>Os objetivos que pretendem alcançar</h2>
-                <p>Informar, educar e preparar a população para agir corretamente em situações de desastres naturais.</p>
+                <h2>Os objetivos</h2>
+                <p>
+                    Para alcançarmos nosso objetivo de salvar a maior quantidade de pessoas possíveis de futuros desastres naturais, é necessário adquirir mais dados, adquirir mais informação, para termos um conhecimento melhor do que o futuro trará. Assim nos possibilitando comunicar e alertar pessoas dos perigos a vir.
+                </p>
             </div>
             <div id="publico" class="sumario-secao">
-                <h2>O público-alvo que será impactado</h2>
+                <h2>O público-alvo</h2>
                 <p>Moradores de áreas de risco, estudantes, professores e a comunidade em geral.</p>
             </div>
             <div id="beneficios" class="sumario-secao">
-                <h2>Os benefícios oferecidos pela solução</h2>
-                <p>Redução de riscos, aumento da segurança, acesso rápido à informação e maior conscientização.</p>
+                <h2>Os benefícios</h2>
+                <p>
+                    Mais calma para as pessoas que moram em area de risco, pois sabendo que nossos dispositivos est'ao monitorando o ambiente entorno de sua casa, saberao que serão avisados com antecedencia de qualquer possibilidade de um desastre natural. Assim n'ao precisam ter medo por suas vidas sempre que chover
+                </p>
             </div>
             <div id="ajuda" class="sumario-secao">
-                <h2>Como a solução ajudará no dia a dia dos usuários</h2>
-                <p>Facilitará o acesso a orientações práticas, alertas em tempo real e dicas de prevenção, tornando a rotina mais segura.</p>
+                <h2>Como a solução ajudará no dia a dia</h2>
+                <p>
+                    É nessa parte que nosso dispositivo entrará, para fornecer mais informações sobre o ambiente. Um dispositivo de pequeno porte, para ser fixado no solo, onde ele medirá a umidade do terreno, umidade do ar, temperatura, pressão atmosférica e saberá a própria posição geográfica através de Gps. Transmitindo toda essa informação usando internet celular 4G para um servidor. Onde esses dados serão processados para preverem e estimarem com mais antecedência e certeza, futuras inundações e o nível de severidade desses eventos, assim nos dando oportunidades de comunicar e avisar aqueles que moram em áreas de risco o mais cedo possível.
+                </p>
             </div>
         </section>   
     </main>

@@ -43,7 +43,7 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector('.sumario');
     const slideshow = document.querySelector('.slideshow-container');
     const slideshowBottom = slideshow.getBoundingClientRect().bottom + window.scrollY;
     if (window.scrollY + 80 >= slideshowBottom) {
