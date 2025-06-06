@@ -143,15 +143,15 @@ const pergunta7 = document.getElementById('p7')
 const pergunta8 = document.getElementById('p8')
 const pergunta9 = document.getElementById('p9')
 const pergunta10 = document.getElementById('p10')
-
+const body = document.body
 const cadastro = document.getElementById('cadastro')
 
 let contador = 0 
 
 function abreMenu() {
     hbgBTN.addEventListener('click', (event)=> {
-        event.preventDefault()
         menuText.innerHTML = ''
+        event.preventDefault()
         contador++
         let menu = document.createElement('div')
         menu.innerHTML = `
@@ -177,9 +177,8 @@ function abreMenu() {
         <button type="button" class="mudarCor" id="padrao">branco</button>
 
         `
-        hbgBTN.classList.add("aberto")
-        menuOpen.append(menu)
-        menuOpen.classList.add(1)
+        hbgBTN.classList.toggle("aberto")
+        menuText.append(menu)
         const MudarAzul = document.getElementById('azul')
         MudarAzul.addEventListener('click', () => {
             body.style.backgroundColor = 'blue'
@@ -194,7 +193,7 @@ function abreMenu() {
         });
 
         const cadastro = document.getElementById('cadastro');
-        cadastro.addEventListener('click', () => {
+        cadastro.addEventListener('click', (event) => {
             menuText.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
@@ -209,9 +208,10 @@ function abreMenu() {
         })
 
         if (hbgBTN.classList.contains("aberto")) {
-            menuOpen.style.display = "block"
-            menuOpen.style.marginLeft = '1100px'
-            menuOpen.style.paddingRight = '130px'
+            menuText.style.display = "block"
+            menuText.style.marginLeft = '00px'
+            menuText.style.paddingRight = '130px'
+            menuText.style.zIndex = '100'
             hbgBTN.style.marginLeft = '1000px'
             
         } else {
