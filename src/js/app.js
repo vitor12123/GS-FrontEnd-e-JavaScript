@@ -129,16 +129,15 @@ let contador = 0
 
 function abreMenu() {
     hbgBTN.addEventListener('click', (event)=> {
-        menuText.innerHTML = ''
-        event.preventDefault()
-        contador++
-        let menu = document.createElement('div')
+        event.preventDefault();
+        menuText.innerHTML = '';
+        contador++;
+
+        let menu = document.createElement('div');
         menu.innerHTML = `
         <h2>Menu</h2>
-
         <h4 id="info">Paginas Relacionadas:</h4>
         <a href="./../pages/index.html">Home</a>
-
         <h4 id="login">Login:</h4>
         <form class="formLogin">
         <label>Usuario:</label>
@@ -148,46 +147,38 @@ function abreMenu() {
         <button>Entrar</button>
         <button id="cadastro" type="button">Cadastre-se</button>
         </form>
-
-
         <h4 id="corDeFundo"> Personalize a cor de fundo:</h4>
         <button type="button" class="mudarCor" id="azul">Azul</button>
         <button type="button" class="mudarCor" id="vermelho">vermelho</button>
         <button type="button" class="mudarCor" id="padrao">branco</button>
+        `;
 
-        `
-        hbgBTN.classList.toggle("aberto")
+        // Toggle animação
+        hbgBTN.classList.toggle("aberto");
+        menuOpen.classList.toggle("aberto");
 
-         if (!hbgBTN.classList.contains("aberto")) {
+        if (!menuOpen.classList.contains("aberto")) {
             menuText.style.display = "none";
             menuText.innerHTML = '';
-            hbgBTN.style.marginLeft = '1150px';
             return;
         }
 
-        menuText.append(menu)
-        
+        menuText.append(menu);
         menuText.style.display = "block";
-        menuText.style.marginLeft = '1210px';
-        menuText.style.paddingRight = '0px';
-        menuText.style.zIndex = '100';
-        hbgBTN.style.marginLeft = '1000px';
+        menuText.style.zIndex = '210';
 
-        const MudarAzul = document.getElementById('azul')
-        MudarAzul.addEventListener('click', () => {
-            body.style.backgroundColor = 'blue'
-        });
-        const MudarVermelho = document.getElementById('vermelho')
-        MudarVermelho.addEventListener('click', () => {
-            body.style.backgroundColor = 'red'
-        });
-        const MudarBranco = document.getElementById('padrao')
-        MudarBranco.addEventListener('click', () => {
-            body.style.backgroundColor = 'white'
-        });
+        // Fecha menu ao clicar fora
+        setTimeout(() => {
+            document.addEventListener('mousedown', fecharMenuFora, { once: true });
+        }, 100);
 
-        const cadastro = document.getElementById('cadastro');
-        cadastro.addEventListener('click', (event) => {
+        // Cores
+        document.getElementById('azul').onclick = () => body.style.backgroundColor = 'blue';
+        document.getElementById('vermelho').onclick = () => body.style.backgroundColor = 'red';
+        document.getElementById('padrao').onclick = () => body.style.backgroundColor = 'white';
+
+        // Cadastro
+        document.getElementById('cadastro').onclick = (event) => {
             menuText.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
@@ -198,10 +189,18 @@ function abreMenu() {
                     <button>Cadastrar</button>
                     <button id="voltar">voltar</button>
                 </form>
-            `
-        })
-        
-    })
+            `;
+        };
+    });
+
+    function fecharMenuFora(e) {
+        if (!menuOpen.contains(e.target) && e.target !== hbgBTN) {
+            menuOpen.classList.remove("aberto");
+            hbgBTN.classList.remove("aberto");
+            menuText.style.display = "none";
+            menuText.innerHTML = '';
+        }
+    }
 }
 
-abreMenu()
+abreMenu();
