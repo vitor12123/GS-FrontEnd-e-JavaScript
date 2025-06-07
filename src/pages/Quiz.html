@@ -6,22 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./../css/style.css">
     <style>
-        #corpo {
-            background-color: white;
-        }
-        header {
-        display: flex;
-        padding: 0px 0px 0px 20px;
-        letter-spacing: 1px;    
-        background-color: #BDEBFF;
-        border-bottom: 1px solid #b3c6d6;
-        font-size: 2rem;
-        justify-content: space-between;
-        position: fixed;
-        width: 100%;
-        z-index: 2;
-        margin: -10px 0px 0px -10px;
-        }
         section {
             padding-top: 150px;
         }
@@ -40,12 +24,6 @@
             text-decoration: none;
         }
         
-        #menu {
-            margin-top: 8px;
-            border-radius: 50px;
-            margin-left: 1225px;
-        }
-
         #inicio {
             margin-top: 30px;
             color:  #1976d2;
@@ -58,24 +36,12 @@
             margin-top: -70px;
             position: absolute;
         }
-       #menuOpen {
-        margin-top: -10px;
-        display: flex;
-        background-color: #1976d2;
-        border-bottom: 1px solid #b3c6d6;
-        height: 120%;
-        justify-content: space-between;
-        position: fixed;
-        padding-left: 0px;
-        margin-left: 1400px; 
-        z-index: 30;
-    }
 
       .aberto {
-            max-width: 100px;
+            max-width: 500px;
             max-height: 100px;
             display: inline-block;
-            margin-left: 1000px;
+            margin-left: 1000px; 
             margin-top: -70px;
             position: absolute;
             margin-right: 200px;
@@ -86,12 +52,6 @@
         display: none;
         margin-right: -200px
        }
-
-        #textMenu {
-            margin-left: 20px;
-            padding-right: 90px;
-            margin-top: -900px;
-        }
 
         #preAbertura{
             background-color: #fff;
@@ -107,9 +67,9 @@
         }
         .formLogin {
             border: solid 1px;
-            margin: 25px 0px 0px 0px;
+            margin: 25px 10px 0px 10px;
             padding: 10px 10px 20px 10px;
-        }
+        }  
         #info{
             margin-bottom: 5px;
         }
@@ -130,6 +90,9 @@
         #formCadastro {
             margin-top: 100px;
         }
+        #arrumando {
+            margin-left: 3000px !important;
+        }
     </style>
 </head>
 <body id="corpo">
@@ -140,9 +103,7 @@
         <img src="../assets/imagens/menu_hamburguer.png" alt="menu_hamburguer" id="menu" class="imag">
     </header> 
     <div id="menuOpen">
-        <div id="textMenu">
 
-        </div>
     </div>
     <section>
         <h1 id="infoQuiz">QUIZ: sobre desastres naturais.</h1>

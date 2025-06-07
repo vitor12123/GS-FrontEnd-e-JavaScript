@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InundaZero</title>
+    <title>CODAC</title>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="icon" type="image/png" href="../assets/imagens/logo.png">
     <style>
@@ -42,50 +42,6 @@
             opacity: 1;
             pointer-events: auto;
         }
-        .slideshow-container {
-            width: 100%;
-            max-width: 2000px;
-            height: 90vh;
-            min-height: 300px;
-            background: var(--cor-primaria);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin: 0 auto;
-            overflow: hidden;
-            box-shadow: 0 4px 16px var(--cor-terciaria);
-            border-radius: 20px;
-            top: 10vh;
-        }
-        .seta {
-            background: rgba(0,0,0,0.3);
-            color: var(--cor-primaria);
-            border: none;
-            font-size: 2.5rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .seta-esquerda {
-            left: 20px;
-        }
-        .seta-direita {
-            right: 20px;
-        }
-        .seta:hover {
-            background: rgba(0,0,016);
-        }
         div p{
             font-size: 1.1rem;
             line-height: 1.5;
@@ -95,23 +51,6 @@
         }
         div h2 {
             font-size: 1.8rem;
-        }
-        .texto-destaque {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            color: var(--cor-primaria);
-            font-size: 1.5rem;
-            font-family: 'Roboto', sans-serif;
-            font-style: italic;
-            text-align: center;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            background: rgba(0,0,0,0.3);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            box-shadow: black 0px 0px 10px;
         }
         nav ul {
             list-style: none;
@@ -148,88 +87,165 @@
             margin-right: 200px;
             visibility: visible;
         }
+        .slide-img {
+            filter: brightness(0.5) grayscale(0.2);
+        }
         #textMenu {
             margin-top:500px;
             margin-left: 20px;
             padding-right: 90px;
             position: fixed;
         }
-        .slide-img {
-            filter: brightness(0.5) grayscale(0.2);
+        .slide {
             transition: transform 0.6s, opacity 0.6s;
             opacity: 1;
+            transform: translate(-50%, -50%);
             position: absolute;
-            left: 0;
-            top: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 1;
         }
-
-        /* Animação para direita (próximo) */
-        .slide-img.saindo-esquerda {
-            transform: translateX(-100%);
-            opacity: 0;
-            z-index: 1;
+        .slide img {
+            filter: brightness(0.5) grayscale(0.2);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
         }
-        .slide-img.vindo-direita {
-            transform: translateX(100%);
-            opacity: 0;
-            z-index: 2;
-        }
-        .slide-img.entrando {
-            transform: translateX(0);
-            opacity: 1;
-            z-index: 2;
-        }
-
-        /* Animação para esquerda (anterior) */
-        .slide-img.saindo-direita {
-            transform: translateX(100%);
-            opacity: 0;
-            z-index: 1;
-        }
-        .slide-img.vindo-esquerda {
-            transform: translateX(-100%);
-            opacity: 0;
-            z-index: 2;
-        }
-
-        /* Nome do desastre animado igual à imagem */
-        #nome-desastre {
+        .legenda {
             opacity: 1;
             transition: transform 0.1s cubic-bezier(.77,0,.18,1), opacity 0.1s;
             position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translate(-50%, 0);
-            width: 100%;
             text-align: center;
             font-size: 2rem;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: var(--cor-texto-secundario);
-            z-index: 3;
             pointer-events: none;
+            z-index: 3;
         }
-        #nome-desastre.saindo-esquerda {
-            transform: translate(-100%, 0);
-            opacity: 0;
+        .texto-destaque {
+            position: absolute;
+            top: 24vh;
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            box-shadow: black 0px 0px 10px;
+            margin-top: 12vh;
+            margin-bottom: -10vh;
+            text-align: center;
+            z-index: 3;
         }
-        #nome-desastre.vindo-direita {
-            transform: translate(100%, 0);
-            opacity: 0;
+        .seta {
+            background: rgba(0,0,0,0.3);
+            color: var(--cor-primaria);
+            border: none;
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
         }
-        #nome-desastre.entrando {
-            transform: translate(-50%, 0);
+        .seta:hover {
+            background: rgba(0,0,0,0.5);
+        }
+        .slideshow-container {
+            width: 100%;
+            height: 90vh;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            top: 4vh;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px var(--cor-terciaria);
+        }
+
+        .seta.esquerda {
+            left: 20px;
+        }
+
+        .seta.direita {
+            right: 20px;
+        }
+        .atual {
             opacity: 1;
+            transform: translateX(0);
+            z-index: 1;
         }
-        #nome-desastre.saindo-direita {
-            transform: translate(100%, 0);
+
+        .sair-esquerda {
+            transform: translateX(-100%);
             opacity: 0;
         }
-        #nome-desastre.vindo-esquerda {
-            transform: translate(-100%, 0);
+
+        .entrar-direita {
+            transform: translateX(100%);
             opacity: 0;
+        }
+        #componentes {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            box-shadow: none;
+        }
+        .componentes {
+            color: var(--cor-texto);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+            box-shadow: var(--cor-terciaria) 0px 0px 10px;
+            margin-bottom: -30px;
+            margin-top: -20px;
+        }
+        .componentes img {
+            box-shadow: var(--cor-terciaria) 0px 0px 10px;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .componentes-container {
+
+            display: flex;
+            flex-direction: row;
+            box-shadow: none;
+            gap: 10px;
+        }
+        #prototipo {
+            text-align: center;
+            padding: 25px 140px;
+            max-width: 2000px;
+        }
+        #prototipo img {
+            align-self: center;
+            width: 650px;
+            border-radius: 10px;
+            transition: height 0.5s, width 0.5s;
+        }   
+        #prototipo img:hover {
+            height: 420px;
+            width: 660px;
         }
     </style>
 </head>
@@ -241,23 +257,38 @@
         </a>  
         <img src="../assets/imagens/menu_hamburguer.png" alt="menu_hamburguer" id="menu" class="imag">
     </header>
-    <div id="menuOpen">
-        
-        <div id="textMenu">
-
-        </div>
+    <div id="menuOpen">       
+        <div id="textMenu"></div>
+    </div>
+    <div class="texto-destaque">
+        <h1>Desastres Naturais</h1>
+        <h2>O que são?</h2>
+        <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como:</p>
     </div>
     <div class="slideshow-container">
-        <div class="texto-destaque">
-            <h1>Desastres Naturais</h1>
-            <h2>O que são?</h2>
-            <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como:</p>
-            <h2 id="nome-desastre"></h2>
+        <div class="slide atual">
+            <img src="../assets/imagens/enchente.png" alt="Enchente">
+            <h2 class="legenda">Enchentes</h2>
         </div>
-        <button class="seta seta-esquerda" id="seta-esquerda">&#10094;</button>
-        <img class="slide-img" id="slide-img-atual" src="../assets/imagens/enchente.png" alt="slide atual">
-        <img class="slide-img" id="slide-img-nova" style="display:none;" alt="slide nova">
-        <button class="seta seta-direita" id="seta-direita">&#10095;</button>
+        <div class="slide">
+            <img src="../assets/imagens/tsunami.png" alt="Tsunami">
+            <h2 class="legenda">Tsunamis</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/furacao.jpg" alt="Furacão">
+            <h2 class="legenda">Furacões</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/incendioFlorestal.png" alt="Incêndio Florestal">
+            <h2 class="legenda">Incêndios Florestais</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/deslizamento.png" alt="Deslizamento">
+            <h2 class="legenda">Deslizamentos de Terra</h2>
+        </div>
+
+        <div class="seta esquerda">&#10094;</div>
+        <div class="seta direita">&#10095;</div>
     </div>
     <main>
         <nav class="sumario">
@@ -275,39 +306,84 @@
             <div id="problema" class="sumario-secao">
                 <h2>O problema</h2>
                 <p>
-                    não tínhamos certeza do nível de impacto que as chuvas teriam sobre o nível dos rios. Ou seja, não tínhamos informação suficiente para comunicar com certeza e segurança para enfatizar devidamente a importância das pessoas evacuarem.
+                    Nossa principal preocupação é a perda de vidas causada pela falta de informação. Se as pessoas soubessem com antecedência sobre a possibilidade e a gravidade de enchentes, poderiam evacuar as áreas de risco de forma segura e planejada, evitando tragédias.
+                    <br>
+                    Além disso, queremos devolver a tranquilidade ao dia a dia das comunidades afetadas. Após os recentes desastres no Rio Grande do Sul, muitos moradores vivem em constante estado de alerta e ansiedade, sentindo medo até mesmo diante de uma simples chuva. Acreditamos que, ao fornecer informações precisas e em tempo real sobre as condições ambientais, podemos ajudar essas pessoas a viverem com mais segurança e menos medo.
+                    <br>
+                    Para os órgãos de segurança pública, nossa solução também representa um avanço: com dados detalhados sobre cada localidade, será possível priorizar ações e recursos de forma mais eficiente, atuando onde houver maior risco e necessidade.
                 </p>
             </div>
             <div id="tecnologias" class="sumario-secao">
                 <h2>As tecnologias utilizadas</h2>
                 <p>
-                    Nosso dispositivo será composto por um SBC (single board computer) tipo Arduino ou Esp32, dois sensores de umidade do solo, um sensor de pressão Barométrica (bmp280), um modulo de GPS (Neo-6M), um modulo de internet celular (sim800l) e um sensor de temperatura e umidade (DHT11). Ele será energizado através de baterias facilmente substituíveis e recarregáveis, por ser um equipamento de baixo consumo elétrico, as baterias só precisarão ser trocadas após meses. Tudo isso montado dentro de uma caixa impressa 3D para fácil transporte e para proteger os componentes dos elementos.
-                    Todos os dados coletados pelos sensores serão enviados para a “nuvem”, onde dentro do servidor os dados serão processados através de algoritmos ou uma AI para prever catástrofes e alertar órgãos de segurança pública caso necessário. E possivelmente enviar alertas automatizados para as populações em regiões de risco que serão afetadas.
-                    Então nosso sistema precisará de um Servidor próprio, ou utilizar de outros provedores de banco de dados, como AWS, Oracle ou Google.
+                    Nosso dispositivo é composto por uma placa controladora (SBC), como Arduino ou ESP32, equipada com dois sensores de umidade do solo, um sensor barométrico (BMP280), um módulo de GPS (Neo-6M), um módulo de internet celular (SIM800L) e um sensor de temperatura e umidade (DHT11). Todo o conjunto é alimentado por baterias recarregáveis e de fácil substituição, garantindo autonomia por vários meses devido ao baixo consumo de energia. Os componentes são protegidos por uma caixa impressa em 3D, projetada para facilitar o transporte e resistir às condições do ambiente externo.
+                    <br>
+                    Todos os dados coletados pelos sensores são enviados automaticamente para a nuvem, onde são processados por algoritmos avançados e inteligência artificial. Esse processamento permite prever possíveis catástrofes naturais e acionar alertas para os órgãos de segurança pública, além de possibilitar o envio de notificações automáticas para as populações em áreas de risco.
+                    <br>
+                    Para garantir a segurança e a disponibilidade das informações, nosso sistema pode operar em um servidor próprio ou utilizar serviços de grandes provedores de banco de dados, como AWS, Oracle ou Google Cloud, assegurando escalabilidade e confiabilidade no monitoramento e na resposta a desastres.
                 </p>
+                <div id="componentes">
+                    <div class="componentes-container">
+                        <div class="componentes">
+                            <h3>DHT11</h3>
+                            <img src="../assets/imagens/Tecnologias/dht11.png" alt="dht11">
+                        </div>
+                        <div class="componentes">
+                            <h3>ESP32</h3>
+                            <img src="../assets/imagens/Tecnologias/ESP32.png" alt="esp32">
+                        </div>
+                        <div class="componentes">
+                            <h3>BMP280</h3>
+                            <img src="../assets/imagens/Tecnologias/SensorBMP280.png" alt="bmp280">
+                        </div>
+                    </div>
+                    <div class="componentes-container">
+                        <div class="componentes">
+                            <h3>Neo-6M</h3>
+                            <img src="../assets/imagens/Tecnologias/GPS-NEO-6M.png" alt="neo-6m">
+                        </div>
+                        <div class="componentes">
+                            <h3>SIM800L</h3>
+                            <img src="../assets/imagens/Tecnologias/sim800l.png" alt="sim800l">
+                        </div>
+                        <div class="componentes">
+                            <h3>HL-69</h3>
+                            <img src="../assets/imagens/Tecnologias/SensorUmidadeDoSolo.png" alt="hl-69">
+                        </div>
+                    </div>
+                </div>
+                <div id="prototipo">
+                    <h3>Protótipo/Simulação</h3>
+                    <a href="https://wokwi.com/projects/432659045803712513"><img src="../assets/imagens/Tecnologias/WOKWI_Screenshot.png" alt="prototipo"></a>
+                </div>
             </div>
             <div id="objetivos" class="sumario-secao">
                 <h2>Os objetivos</h2>
                 <p>
-                    Para alcançarmos nosso objetivo de salvar a maior quantidade de pessoas possíveis de futuros desastres naturais, é necessário adquirir mais dados, adquirir mais informação, para termos um conhecimento melhor do que o futuro trará. Assim nos possibilitando comunicar e alertar pessoas dos perigos a vir.
+                    Para atingirmos nosso objetivo de salvar o maior número possível de vidas diante de futuros desastres naturais, é fundamental investir na coleta e análise de dados ambientais. Quanto mais informações tivermos, melhor poderemos compreender e antecipar os riscos, permitindo uma atuação preventiva e eficiente. Dessa forma, conseguimos comunicar e alertar as pessoas em áreas de risco com antecedência, oferecendo a elas a oportunidade de se protegerem e reduzindo significativamente o impacto desses eventos em suas vidas.
                 </p>
             </div>
             <div id="publico" class="sumario-secao">
                 <h2>O público-alvo</h2>
-                <p>Moradores de áreas de risco, estudantes, professores e a comunidade em geral.</p>
+                <p>
+                    Nosso público-alvo são as pessoas que vivem em áreas de risco, pois são elas que mais se beneficiarão com a nossa solução. No entanto, a aquisição do dispositivo será realizada principalmente por órgãos de segurança pública, que utilizarão a tecnologia para proteger e alertar essas comunidades de forma mais eficiente e preventiva.
+                </p>
             </div>
             <div id="beneficios" class="sumario-secao">
                 <h2>Os benefícios</h2>
                 <p>
-                    Mais calma para as pessoas que moram em area de risco, pois sabendo que nossos dispositivos est'ao monitorando o ambiente entorno de sua casa, saberao que serão avisados com antecedencia de qualquer possibilidade de um desastre natural. Assim n'ao precisam ter medo por suas vidas sempre que chover
+                    Mais tranquilidade para quem vive em áreas de risco: com nossos dispositivos monitorando continuamente o ambiente ao redor de sua casa, você será avisado com antecedência sobre qualquer possibilidade de desastre natural. Assim, não será mais necessário viver com medo toda vez que chover, pois a informação e o alerta chegarão a tempo de garantir sua segurança e de sua família.
                 </p>
             </div>
             <div id="ajuda" class="sumario-secao">
                 <h2>Como a solução ajudará no dia a dia</h2>
                 <p>
-                    É nessa parte que nosso dispositivo entrará, para fornecer mais informações sobre o ambiente. Um dispositivo de pequeno porte, para ser fixado no solo, onde ele medirá a umidade do terreno, umidade do ar, temperatura, pressão atmosférica e saberá a própria posição geográfica através de Gps. Transmitindo toda essa informação usando internet celular 4G para um servidor. Onde esses dados serão processados para preverem e estimarem com mais antecedência e certeza, futuras inundações e o nível de severidade desses eventos, assim nos dando oportunidades de comunicar e avisar aqueles que moram em áreas de risco o mais cedo possível.
+                    É nesse contexto que nosso dispositivo faz a diferença, fornecendo informações detalhadas e em tempo real sobre o ambiente. Compacto e fácil de instalar no solo, ele monitora continuamente a umidade do terreno e do ar, a temperatura, a pressão atmosférica e a localização geográfica via GPS. Todos esses dados são transmitidos automaticamente por conexão 4G para um servidor, onde são analisados por algoritmos avançados. Com isso, é possível prever inundações e estimar seu nível de severidade com maior antecedência e precisão, permitindo que alertas sejam enviados rapidamente para as pessoas em áreas de risco e para os órgãos responsáveis, aumentando as chances de prevenção e proteção.
                 </p>
-            </div>
+                <iframe style="border-radius: 10px;" width="560" height="315" src="https://www.youtube.com/embed/l96I-5lME68" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                <br>
         </section>   
     </main>
     <footer>

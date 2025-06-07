@@ -1,85 +1,64 @@
-const imagens = [
-    "../assets/imagens/enchente.png",
-    "../assets/imagens/tsunami.png",
-    "../assets/imagens/furacao.jpg",
-    "../assets/imagens/terremoto.png",
-    "../assets/imagens/deslizamento.png",
-    "../assets/imagens/incendioFlorestal.png"
-];
-const nomesDesastres = [
-    "Enchentes",
-    "Tsunamis",
-    "Furacões",
-    "Terremotos",
-    "Deslizamento de Terra",
-    "Incêndio Florestal"
-];
+let currentIndex = 0;
+  const slides = document.querySelectorAll(".slide");
+  const totalSlides = slides.length;
 
-let slideAtual = 0;
-const slideImgAtual = document.getElementById("slide-img-atual");
-const slideImgNova = document.getElementById("slide-img-nova");
-const setaEsquerda = document.getElementById("seta-esquerda");
-const setaDireita = document.getElementById("seta-direita");
-const nomeDesastreEl = document.getElementById('nome-desastre');
+  function showSlide(newIndex, direction = 1) {
+    if (newIndex === currentIndex) return;
 
-function animarSlide(novoIndex, direcao = 1) {
-    if (novoIndex < 0) novoIndex = imagens.length - 1;
-    if (novoIndex >= imagens.length) novoIndex = 0;
+    const currentSlide = slides[currentIndex];
+    const nextSlide = slides[newIndex];
 
-    // Define classes de acordo com a direção
-    const sairClasse = direcao === 1 ? "saindo-esquerda" : "saindo-direita";
-    const virClasse = direcao === 1 ? "vindo-direita" : "vindo-esquerda";
+    // Define direção
+    currentSlide.classList.remove("atual");
+    currentSlide.classList.add("sair-esquerda");
 
-    // Remove classes antigas
-    slideImgAtual.className = "slide-img";
-    slideImgNova.className = "slide-img";
-    nomeDesastreEl.className = "";
+    nextSlide.classList.remove("sair-esquerda", "entrar-direita");
+    nextSlide.style.transition = "none"; // reset transition
 
-    // Prepara imagem nova para entrar do lado correto
-    slideImgNova.src = imagens[novoIndex];
-    slideImgNova.style.display = "block";
-    slideImgNova.classList.add(virClasse);
+    if (direction > 0) {
+      nextSlide.style.transform = "translateX(100%)";
+    } else {
+      nextSlide.style.transform = "translateX(-100%)";
+    }
 
-    // Prepara nome do desastre para entrar do lado correto
-    nomeDesastreEl.classList.add(sairClasse);
+    // Espera um tick para ativar transição
+    requestAnimationFrame(() => {
+      nextSlide.style.transition = "";
+      nextSlide.classList.add("atual");
+      nextSlide.style.transform = "translateX(0)";
+    });
 
-    // Força reflow para garantir a transição
-    void slideImgNova.offsetWidth;
-    void nomeDesastreEl.offsetWidth;
-
-    // Inicia animação: imagem atual sai, nova entra
-    slideImgAtual.classList.add(sairClasse);
     setTimeout(() => {
-        slideImgNova.className = "slide-img entrando";
-        nomeDesastreEl.classList.remove(sairClasse);
-        nomeDesastreEl.classList.add(virClasse);
+      currentSlide.classList.remove("sair-esquerda");
+      currentSlide.style.transform = "translateX(100%)";
+    }, 800);
 
-        setTimeout(() => {
-            nomeDesastreEl.textContent = nomesDesastres[novoIndex];
-            nomeDesastreEl.classList.remove(virClasse);
-            nomeDesastreEl.classList.add('entrando');
-        }, 100);
-    }, 10);
+    currentIndex = newIndex;
+  }
 
-    // Após a animação, troca as imagens
-    setTimeout(() => {
-        slideImgAtual.src = imagens[novoIndex];
-        slideImgAtual.className = "slide-img entrando";
-        slideImgNova.style.display = "none";
-        slideAtual = novoIndex;
-    }, 600);
-}
+  function changeSlide(direction) {
+    const newIndex = (currentIndex + direction + totalSlides) % totalSlides;
+    showSlide(newIndex, direction);
+  }
 
-setaEsquerda.addEventListener("click", () => animarSlide(slideAtual - 1, -1));
-setaDireita.addEventListener("click", () => animarSlide(slideAtual + 1, 1));
+  function autoSlide() {
+    changeSlide(1);
+  }
 
-setInterval(() => {
-    animarSlide(slideAtual + 1, 1);
-}, 4000);
+  let slideInterval = setInterval(autoSlide, 5000);
 
-// Inicializa
-slideImgAtual.src = imagens[slideAtual];
-nomeDesastreEl.textContent = nomesDesastres[slideAtual];
+  // Reset timer when user clicks arrows
+  document.querySelector('.seta.esquerda').addEventListener('click', () => {
+    clearInterval(slideInterval);
+    changeSlide(-1);
+    slideInterval = setInterval(autoSlide, 5000);
+  });
+
+  document.querySelector('.seta.direita').addEventListener('click', () => {
+    clearInterval(slideInterval);
+    changeSlide(1);
+    slideInterval = setInterval(autoSlide, 5000);
+  });
 
 const sections = document.querySelectorAll('.sumario-secao');
 const navLinks = document.querySelectorAll('nav a');
@@ -150,7 +129,7 @@ let contador = 0
 
 function abreMenu() {
     hbgBTN.addEventListener('click', (event)=> {
-        menuText.innerHTML = ''
+        menuOpen.innerHTML = ''
         event.preventDefault()
         contador++
         let menu = document.createElement('div')
@@ -158,12 +137,13 @@ function abreMenu() {
         <h2>Menu</h2>
 
         <h4 id="info">Paginas Relacionadas:</h4>
-        <a href="./../pages/index.html">Home</a>
+        <a href="./../pages/Quiz.html">Quiz</a>
 
         <h4 id="login">Login:</h4>
         <form class="formLogin">
         <label>Usuario:</label>
         <input type="text" id="nome" placeholder="digite seu usuario..."> 
+        <br>
         <label>senha:</label>
         <input type="password" id="senha" placeholder="digite sua senha..."> 
         <button>Entrar</button>
@@ -175,24 +155,33 @@ function abreMenu() {
         <button type="button" class="mudarCor" id="azul">Azul</button>
         <button type="button" class="mudarCor" id="vermelho">vermelho</button>
         <button type="button" class="mudarCor" id="padrao">branco</button>
-
+        <br>
         `
         hbgBTN.classList.toggle("aberto")
 
          if (!hbgBTN.classList.contains("aberto")) {
-            menuText.style.display = "none";
-            menuText.innerHTML = '';
+            menuOpen.style.display = "none";
+            menuOpen.innerHTML = '';
             hbgBTN.style.marginLeft = '1150px';
             return;
         }
-
-        menuText.append(menu)
+        menu.style.display = 'flex'
+        menu.style.backgroundColor = '#1976d2'
+        menu.style.height = '120%'
+        menu.style.width = '100%' 
+        menu.style.position = 'fixed'
+        menu.style.marginLeft = '850px'
+        menu.style.marginTop = '-200px'
+        menu.style.maxWidth = '250px'
+        menu.style.paddingBottom = '200px'
+        menuOpen.append(menu)
         
-        menuText.style.display = "block";
-        menuText.style.marginLeft = '1210px';
-        menuText.style.paddingRight = '0px';
-        menuText.style.zIndex = '100';
+        menuOpen.style.display = "block";
+        menuOpen.style.marginLeft = '0px';
+        menuOpen.style.paddingRight = '130px';
+        menuOpen.style.zIndex = '10';
         hbgBTN.style.marginLeft = '1000px';
+        hbgBTN.style.zIndex = "11";
 
         const MudarAzul = document.getElementById('azul')
         MudarAzul.addEventListener('click', () => {
@@ -209,7 +198,7 @@ function abreMenu() {
 
         const cadastro = document.getElementById('cadastro');
         cadastro.addEventListener('click', (event) => {
-            menuText.innerHTML = `
+            menuOpen.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
                     <label>Usuário:</label>
