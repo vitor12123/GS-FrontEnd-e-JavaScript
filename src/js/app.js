@@ -132,13 +132,12 @@ function abreMenu() {
         menuOpen.innerHTML = ''
         event.preventDefault()
         contador++
-        let menu = document.createElement('div')
+
+        let menu = document.createElement('div');
         menu.innerHTML = `
         <h2>Menu</h2>
-
         <h4 id="info">Paginas Relacionadas:</h4>
-        <a href="./../pages/Quiz.html">Quiz</a>
-
+        <a href="./../pages/index.html">Home</a>
         <h4 id="login">Login:</h4>
         <form class="formLogin">
         <label>Usuario:</label>
@@ -149,15 +148,15 @@ function abreMenu() {
         <button>Entrar</button>
         <button id="cadastro" type="button">Cadastre-se</button>
         </form>
-
-
         <h4 id="corDeFundo"> Personalize a cor de fundo:</h4>
         <button type="button" class="mudarCor" id="azul">Azul</button>
         <button type="button" class="mudarCor" id="vermelho">vermelho</button>
         <button type="button" class="mudarCor" id="padrao">branco</button>
-        <br>
-        `
-        hbgBTN.classList.toggle("aberto")
+        `;
+
+        // Toggle animação
+        hbgBTN.classList.toggle("aberto");
+        menuOpen.classList.toggle("aberto");
 
          if (!hbgBTN.classList.contains("aberto")) {
             menuOpen.style.display = "none";
@@ -170,34 +169,35 @@ function abreMenu() {
         menu.style.height = '120%'
         menu.style.width = '100%' 
         menu.style.position = 'fixed'
-        menu.style.marginLeft = '850px'
-        menu.style.marginTop = '-200px'
+        menu.style.marginLeft = '2000px'
+        menu.style.marginTop = '-1000px'
         menu.style.maxWidth = '250px'
         menu.style.paddingBottom = '200px'
         menuOpen.append(menu)
         
         menuOpen.style.display = "block";
-        menuOpen.style.marginLeft = '0px';
-        menuOpen.style.paddingRight = '130px';
-        menuOpen.style.zIndex = '10';
+        menuOpen.style.zIndex = '100';
         hbgBTN.style.marginLeft = '1000px';
-        hbgBTN.style.zIndex = "11";
 
-        const MudarAzul = document.getElementById('azul')
-        MudarAzul.addEventListener('click', () => {
-            body.style.backgroundColor = 'blue'
-        });
-        const MudarVermelho = document.getElementById('vermelho')
-        MudarVermelho.addEventListener('click', () => {
-            body.style.backgroundColor = 'red'
-        });
-        const MudarBranco = document.getElementById('padrao')
-        MudarBranco.addEventListener('click', () => {
-            body.style.backgroundColor = 'white'
-        });
+        if (!menuOpen.classList.contains("aberto")) {
+            menuOpen.style.display = "none";
+            menuOpen.innerHTML = '';
+            return;
+        }
+
+        // Fecha menu ao clicar fora
+        setTimeout(() => {
+            document.addEventListener('mousedown', fecharMenuFora, { once: true });
+        }, 100);
 
         const cadastro = document.getElementById('cadastro');
         cadastro.addEventListener('click', (event) => {
+            menuOpen.innerHTML = `
+        document.getElementById('azul').onclick = () => body.style.backgroundColor = 'blue';
+        document.getElementById('vermelho').onclick = () => body.style.backgroundColor = 'red';
+        document.getElementById('padrao').onclick = () => body.style.backgroundColor = 'white';
+`
+        document.getElementById('cadastro').onclick = (event) => {
             menuOpen.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
@@ -208,10 +208,19 @@ function abreMenu() {
                     <button>Cadastrar</button>
                     <button id="voltar">voltar</button>
                 </form>
-            `
-        })
-        
-    })
-}
+            `;
+        };
+    });
 
-abreMenu()
+    function fecharMenuFora(e) {
+        if (!menuOpen.contains(e.target) && e.target !== hbgBTN) {
+            menuOpen.classList.remove("aberto");
+            hbgBTN.classList.remove("aberto");
+            menuOpen.style.display = "none";
+            menuOpen.innerHTML = '';
+        }
+    }
+}
+)}
+
+abreMenu();
