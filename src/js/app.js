@@ -150,7 +150,7 @@ let contador = 0
 
 function abreMenu() {
     hbgBTN.addEventListener('click', (event)=> {
-        menuText.innerHTML = ''
+        menuOpen.innerHTML = ''
         event.preventDefault()
         contador++
         let menu = document.createElement('div')
@@ -180,18 +180,26 @@ function abreMenu() {
         hbgBTN.classList.toggle("aberto")
 
          if (!hbgBTN.classList.contains("aberto")) {
-            menuText.style.display = "none";
-            menuText.innerHTML = '';
+            menuOpen.style.display = "none";
+            menuOpen.innerHTML = '';
             hbgBTN.style.marginLeft = '1150px';
             return;
         }
-
-        menuText.append(menu)
+        menu.style.display = 'flex'
+        menu.style.backgroundColor = '#1976d2'
+        menu.style.height = '120%'
+        menu.style.width = '100%' 
+        menu.style.position = 'fixed'
+        menu.style.marginLeft = '779px'
+        menu.style.marginTop = '-100px'
+        menu.style.maxWidth = '250px'
+        menu.style.paddingBottom = '200px'
+        menuOpen.append(menu)
         
-        menuText.style.display = "block";
-        menuText.style.marginLeft = '1210px';
-        menuText.style.paddingRight = '0px';
-        menuText.style.zIndex = '100';
+        menuOpen.style.display = "block";
+        menuOpen.style.marginLeft = '0px';
+        menuOpen.style.paddingRight = '0px';
+        menuOpen.style.zIndex = '100';
         hbgBTN.style.marginLeft = '1000px';
 
         const MudarAzul = document.getElementById('azul')
@@ -209,7 +217,7 @@ function abreMenu() {
 
         const cadastro = document.getElementById('cadastro');
         cadastro.addEventListener('click', (event) => {
-            menuText.innerHTML = `
+            menuOpen.innerHTML = `
                 <h4 id="cadastro">Cadastre-se:</h4>
                 <form class="formLogin" id="formCadastro">
                     <label>Usuário:</label>
