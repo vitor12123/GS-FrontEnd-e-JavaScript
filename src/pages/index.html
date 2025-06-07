@@ -43,50 +43,6 @@
             opacity: 1;
             pointer-events: auto;
         }
-        .slideshow-container {
-            width: 100%;
-            max-width: 2000px;
-            height: 90vh;
-            min-height: 300px;
-            background: var(--cor-primaria);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin: 0 auto;
-            overflow: hidden;
-            box-shadow: 0 4px 16px var(--cor-terciaria);
-            border-radius: 20px;
-            top: 10vh;
-        }
-        .seta {
-            background: rgba(0,0,0,0.3);
-            color: var(--cor-primaria);
-            border: none;
-            font-size: 2.5rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .seta-esquerda {
-            left: 20px;
-        }
-        .seta-direita {
-            right: 20px;
-        }
-        .seta:hover {
-            background: rgba(0,0,016);
-        }
         div p{
             font-size: 1.1rem;
             line-height: 1.5;
@@ -96,23 +52,6 @@
         }
         div h2 {
             font-size: 1.8rem;
-        }
-        .texto-destaque {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            color: var(--cor-primaria);
-            font-size: 1.5rem;
-            font-family: 'Roboto', sans-serif;
-            font-style: italic;
-            text-align: center;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            background: rgba(0,0,0,0.3);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            box-shadow: black 0px 0px 10px;
         }
         nav ul {
             list-style: none;
@@ -148,81 +87,109 @@
             position: absolute;
             padding-right: 200px;
         }
-        .slide-img {
-            filter: brightness(0.5) grayscale(0.2);
+        .slide {
             transition: transform 0.6s, opacity 0.6s;
             opacity: 1;
+            transform: translate(-50%, -50%);
             position: absolute;
-            left: 0;
-            top: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 1;
         }
-
-        /* Animação para direita (próximo) */
-        .slide-img.saindo-esquerda {
-            transform: translateX(-100%);
-            opacity: 0;
-            z-index: 1;
+        .slide img {
+            filter: brightness(0.5) grayscale(0.2);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
         }
-        .slide-img.vindo-direita {
-            transform: translateX(100%);
-            opacity: 0;
-            z-index: 2;
-        }
-        .slide-img.entrando {
-            transform: translateX(0);
-            opacity: 1;
-            z-index: 2;
-        }
-
-        /* Animação para esquerda (anterior) */
-        .slide-img.saindo-direita {
-            transform: translateX(100%);
-            opacity: 0;
-            z-index: 1;
-        }
-        .slide-img.vindo-esquerda {
-            transform: translateX(-100%);
-            opacity: 0;
-            z-index: 2;
-        }
-
-        /* Nome do desastre animado igual à imagem */
-        #nome-desastre {
+        .legenda {
             opacity: 1;
             transition: transform 0.1s cubic-bezier(.77,0,.18,1), opacity 0.1s;
             position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translate(-50%, 0);
-            width: 100%;
             text-align: center;
             font-size: 2rem;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: var(--cor-texto-secundario);
-            z-index: 3;
             pointer-events: none;
+            z-index: 3;
         }
-        #nome-desastre.saindo-esquerda {
-            transform: translate(-100%, 0);
-            opacity: 0;
+        .texto-destaque {
+            position: absolute;
+            top: 28vh;
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            box-shadow: black 0px 0px 10px;
+            margin-top: 12vh;
+            margin-bottom: -10vh;
+            text-align: center;
+            z-index: 3;
         }
-        #nome-desastre.vindo-direita {
-            transform: translate(100%, 0);
-            opacity: 0;
+        .seta {
+            background: rgba(0,0,0,0.3);
+            color: var(--cor-primaria);
+            border: none;
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
         }
-        #nome-desastre.entrando {
-            transform: translate(-50%, 0);
+        .seta:hover {
+            background: rgba(0,0,0,0.5);
+        }
+        .slideshow-container {
+            width: 100%;
+            height: 90vh;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            top: 10vh;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px var(--cor-terciaria);
+        }
+
+        .seta.esquerda {
+            left: 20px;
+        }
+
+        .seta.direita {
+            right: 20px;
+        }
+        .atual {
             opacity: 1;
+            transform: translateX(0);
+            z-index: 1;
         }
-        #nome-desastre.saindo-direita {
-            transform: translate(100%, 0);
+
+        .sair-esquerda {
+            transform: translateX(-100%);
             opacity: 0;
         }
-        #nome-desastre.vindo-esquerda {
-            transform: translate(-100%, 0);
+
+        .entrar-direita {
+            transform: translateX(100%);
             opacity: 0;
         }
     </style>
@@ -239,18 +206,36 @@
         <article id="textMenu">
 
         </article>
-    </nav>
+    </nav> 
+    <div class="texto-destaque">
+        <h1>Desastres Naturais</h1>
+        <h2>O que são?</h2>
+        <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como:</p>
+    </div>
     <div class="slideshow-container">
-        <div class="texto-destaque">
-            <h1>Desastres Naturais</h1>
-            <h2>O que são?</h2>
-            <p>Desastres naturais são eventos causados por fenômenos da natureza Assim como:</p>
-            <h2 id="nome-desastre"></h2>
+        <div class="slide atual">
+            <img src="../assets/imagens/enchente.png" alt="Enchente">
+            <h2 class="legenda">Enchente</h2>
         </div>
-        <button class="seta seta-esquerda" id="seta-esquerda">&#10094;</button>
-        <img class="slide-img" id="slide-img-atual" src="../assets/imagens/enchente.png" alt="slide atual">
-        <img class="slide-img" id="slide-img-nova" style="display:none;" alt="slide nova">
-        <button class="seta seta-direita" id="seta-direita">&#10095;</button>
+        <div class="slide">
+            <img src="../assets/imagens/tsunami.png" alt="Tsunami">
+            <h2 class="legenda">Tsunami</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/furacao.jpg" alt="Furacão">
+            <h2 class="legenda">Furacão</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/incendioFlorestal.png" alt="Incêndio Florestal">
+            <h2 class="legenda">Incêndio Florestal</h2>
+        </div>
+        <div class="slide">
+            <img src="../assets/imagens/deslizamento.png" alt="Deslizamento">
+            <h2 class="legenda">Deslizamento</h2>
+        </div>
+
+        <div class="seta esquerda">&#10094;</div>
+        <div class="seta direita">&#10095;</div>
     </div>
     <main>
         <nav class="sumario">
@@ -287,7 +272,7 @@
             </div>
             <div id="publico" class="sumario-secao">
                 <h2>O público-alvo</h2>
-                <p>Moradores de áreas de risco, estudantes, professores e a comunidade em geral.</p>
+                <p>Nosso publico alvo são pessoas em areás de risco. Porém quem vai adquirir nosso dispositivo são os orgãos de segunrança publica, mas que vai se beneficiar com esse produto são as pessoas que moram em areas de risco.</p>
             </div>
             <div id="beneficios" class="sumario-secao">
                 <h2>Os benefícios</h2>
