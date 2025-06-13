@@ -1,0 +1,110 @@
+:root{
+    --cor-primaria: #e4e0dd;
+    --cor-secundaria: #2d7696;
+    --cor-terciaria: #04293c;
+    --cor-texto: #052b3e;
+    --cor-texto-secundario: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-primaria);
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+header {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: var(--cor-secundaria);
+}
+
+header a img {
+    width: 5rem;
+    height: 5rem;
+}
+header a {
+    text-decoration: none;
+    border: none;
+    border-radius: 60px;
+    background-color: var(--cor-primaria);
+    margin-left: 10px;
+}
+
+#menu {
+    background-color: var(--cor-secundaria);
+    margin: 0 auto;
+    width: 6rem;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-secundaria);
+    border:solid 1px var(--cor-terciaria);
+    border-radius: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#menu.aberto::after {
+  content: "✕";
+  position: absolute;
+  font-size: 1.8rem;
+  color: var(--cor-texto);
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15vh;
+}
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    box-shadow: var(--cor-terciaria) 0px 0px 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    border-radius: 10px;
+    margin: 2rem;
+}
+footer {
+    font-size: 1.5rem;
+    width: 100%;
+    height: 8vh;
+    color: var(--cor-texto);
+    background-color: var(--cor-secundaria);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: -10px;
+}
